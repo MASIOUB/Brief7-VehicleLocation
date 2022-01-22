@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Reservation</title>
+        <link rel="stylesheet" href="./reservation/style.css">
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar">
+            <h1 class="logo">RentMeNow</h1>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="./reserve.html" class="active">Reservation</a></li>
+                <li class="btn"><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <img src="./img/menu-btn.png" alt="" class="menu-btn">
+        </nav>
+
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <h2>Reservation</h2>
+            </div>
+        </header>
+
+        <!-- Reservation Section -->
+        <main>
+            <h2>Choose Your Vehicle</h2>
+            <form>
+                <label>
+                    <span class="case">Type of vehicle</span>
+                    <select id="vehicle" class="case">
+                        <option value="motorcycle">motorcycle</option>
+                        <option value="citadine">Citadine</option>
+                        <option value="compact">Compact</option>
+                        <option value="berline">Berline</option>
+                        <option value="utility">Utility</option>
+                        <option value="contructionMachine">Construction Machine</option>
+                        <option value="truck">Truck</option>
+                      </select>
+                </label>
+                <div id="content"></div>
+                <label>
+                    <span class="case">Number of days</span>
+                    <input type="number" min="1" value="1" id="day" class="case">
+                </label>
+                <input type="submit" class="btn">
+            </form>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="copyright">
+                <p>© 2022 RentMeNow. All rights reserved.</p>
+            </div>
+            <div class="social-media">
+                <a href="www.facebook.com"><img src="./img/facebook.png" alt="facebook icon" class="sm-icon"></a>
+                <a href="www.instagram.com"><img src="./img/instagram.png" alt="instagram icon" class="sm-icon"></a>
+                <a href="www.youtube.com"><img src="./img/youtube.png" alt="youtube icon" class="sm-icon"></a>
+            </div>
+        </footer>
+
+        <!-- JavaScript Code -->
+        <script src="reservation/reservation.js">
+        </script>
+    </body>
+</html>

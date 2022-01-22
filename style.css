@@ -1,0 +1,274 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* === Global === */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+ul{
+    list-style: none;
+}
+
+.active{
+    color: #fc036b;
+    font-weight: bold;
+}
+
+/* Navbar */
+.navbar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    color: whitesmoke;
+}
+
+.nav-links{
+    display: flex;
+    align-items: center;
+    text-shadow: 0 0 5px black;
+}
+
+.nav-links li{
+    margin: 0 30px;
+    cursor: pointer;
+}
+
+.menu-btn{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 25px;
+    cursor: pointer;
+    display: none;
+}
+
+/* header */
+header{
+    height: 100vh;
+    background-image: url('./img/f485e1a0-eb1e-41bc-8de0-02edb2fbdafc.jpeg');
+    background-position: bottom;
+    background-size: cover;
+    color: whitesmoke;
+    text-align: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.header-content{
+    margin-bottom: 40px;
+}
+
+.header-content h2{
+    font-size: 5vmin;
+}
+
+.line{
+    width: 150px;
+    height: 4px;
+    background: #fc036b;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+.header-content h1{
+    font-size: 7vmin;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.btn{
+    padding: 8px 15px;
+    background: #fc036b;
+    border-radius: 30px;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+/* Features */
+.features h4{
+    font-size: 4vmin;
+    color: #484872;
+    margin: 20px auto;
+}
+
+.features{
+    display: flex;
+    width: 100%;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 5% 2%;
+    text-align: center;
+}
+
+.col p{
+    text-align: center;
+    color: #7c7c7c;
+    font-size: 3vmin;
+    font-weight: lighter;
+}
+
+/* about us */
+.about-us{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.text-content, .image-content{
+    padding: 5% 5%;
+}
+
+.text-content h4{
+    font-size: 3vmin;
+}
+
+.underLine{
+    width: 95px;
+    height: 4px;
+    background: #fc036b;
+    margin: 10px 0 0 0;
+    border-radius: 5px;
+}
+
+.text-content h2{
+    font-size: 5vmin;
+    color: #484872;
+}
+
+.text-content p{
+    color: #7c7c7c;
+    font-size: 3vmin;
+}
+
+.image{
+    border-radius: 10% 0 0 0;
+}
+
+/* banner */
+.banner{
+    background-image: url(./img/bmw-f93-cv-onepager-exterior-attitude-sd-01.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    background-position: center;
+    color: whitesmoke;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-content h1{
+    font-size: 7vmin;
+    margin-bottom: 30px;
+}
+
+/* footer */
+footer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    background-color: #484872;
+}
+
+.copyright p{
+    font-weight: lighter;
+    color: #7c7c7c;
+    font-size: 2.5vmin;
+}
+
+.sc-icon{
+    width: 20px;
+}
+
+/* Mobile device */
+@media (max-width:1000px){
+
+    /* navbar */
+    .menu-btn{
+        display: block;
+
+    }
+
+    .navbar{
+        padding: 0;
+    }
+
+    .logo{
+        position: absolute;
+        top: 30px;
+        left: 30px;
+    }
+
+    .nav-links{
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        justify-content: center;
+        background: #484872;
+        margin-top: -900px;
+        transition: all 0.5s ease;
+    }
+
+    .mobile-menu{
+        margin-top: 0px;
+        border-bottom-right-radius: 30%;
+    }
+
+    .nav-links li{
+        margin: 30px auto;
+    }
+
+    /* features */
+    .features{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* abut us */
+    .about-us{
+        display: flex;
+        flex-direction: column-reverse; 
+    }
+
+    .image{
+        width: 100%;
+    }
+
+    /* footer */
+    .footer{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .social-media{
+        margin-top: 5px;
+    }
+
+}
