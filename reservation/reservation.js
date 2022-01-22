@@ -168,8 +168,8 @@ function createResultPopup(nombreDeJour, prix, carbPercentage, bvPercentage) {
   popup.innerHTML = `
     <p>Your Vehicle Reserved</p>
     <p>Vehicle Type: ${vehicleType}</p>
-    <p>Type boite à vitesse: ${boxVitssType} (${bvPercentage}%)</p>
-    <p>Carburant Type: ${carburantType} (${carbPercentage}%)</p>
+    <p>Type boite à vitesse: ${boxVitssType} (${bvPercentage * 100}%)</p>
+    <p>Carburant Type: ${carburantType} (${carbPercentage * 100}%)</p>
     <p>Price: ${prix}£ for ${nombreDeJour} days</p>
     `
 
