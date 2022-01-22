@@ -1,3 +1,3 @@
 # Project-RentMeNow
 
-https://masioub.github.io/Project-RentMeNow/index.html
+https://masioub.github.io/RentMeNow-Project/
