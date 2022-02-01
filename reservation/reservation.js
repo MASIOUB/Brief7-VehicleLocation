@@ -9,40 +9,24 @@ menuBtn.addEventListener('click',()=>{
 
 
 
-
 // select
-const vehiclesType = document.querySelector("#vehicle");
-const form = document.querySelector("form");
-const formDiv = form.querySelector("#content");
 const main = document.querySelector("main");
+const form = document.querySelector("form");
+const vehiclesType = document.querySelector("#vehicle");
+const carburantDiv = form.querySelector("#carburantType");
+const gearBoxDiv = form.querySelector("#gearBox");
 const nmbrDays = document.querySelector("#day");
 
 
-// global let
+
+// declaration global let
 let vehicleType = "";
 let carburantType = "";
 let boxVitssType = "";
 
 
 
-//  creation result popup
-const popup = document.createElement("div");
-popup.classList.add("popup");
-
-
-
-
-// creation boite vitesse
-const boxVitss = document.createElement("div")
-const boxVitssSpan = document.createElement("span")
-boxVitssSpan.innerText = "Boite à vitesse"
-boxVitss.appendChild(boxVitssSpan);
-const boxVitssData = document.createElement("span");
-boxVitssData.classList.add("data");
-
-
-
-// type de boite à vitesse
+// speed box type
 const vehiclesBoxVitss = {
   motorcycle: "aucun",
   citadine: "manuelle",
@@ -54,7 +38,8 @@ const vehiclesBoxVitss = {
 }
 
 
-// Bonus of type of carburant
+
+// Bonus
 const vehicleBonus = {
   automatique: 19,
   electrique: 5,
@@ -64,6 +49,8 @@ const vehicleBonus = {
 }
 
 
+
+// price
 const vehiclesPrix = {
   motorcycle: 10,
   citadine: 12,
@@ -74,6 +61,9 @@ const vehiclesPrix = {
   truck: 250,
 }
 
+
+
+// carburant type
 const carbrtTypes = {
   motorcycle: ["electrique", "essence"],
   citadine: ["electrique", "hybride", "essence", "diesel"],
@@ -85,21 +75,18 @@ const carbrtTypes = {
 }
 
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const boxVitssPercentage = (vehicleBonus[boxVitssType] || 0) / 100;
-  const carburantPercentage = (vehicleBonus[carburantType] || 0) / 100;
-  const nmbrOfDays = nmbrDays.value
-  const vehiclePrix = vehiclesPrix[vehicleType]
-
-  let prix = vehiclePrix + (vehiclePrix * boxVitssPercentage) + (vehiclePrix * carburantPercentage)
-  prix = prix * nmbrOfDays;
-  createResultPopup(nmbrOfDays, prix, carburantPercentage, boxVitssPercentage);
-})
+// creation div of gear box
+const boxVitss = document.createElement("div")
+const boxVitssSpan = document.createElement("span")
+boxVitssSpan.innerText = "Gear box"
+boxVitss.appendChild(boxVitssSpan);
+const boxVitssData = document.createElement("span");
+boxVitss.appendChild(boxVitssData);
+boxVitssData.classList.add("data");
 
 
 
-// creation de carburant
+// creation select of carburant type
 const carburantLabel = document.createElement("label");
 const carburantSpan = document.createElement("span")
 carburantSpan.innerText = "Carburant Type";
@@ -108,6 +95,7 @@ const carburantTypesSelect = document.createElement("select");
 carburantLabel.appendChild(carburantTypesSelect)
 carburantTypesSelect.classList.add("case")
 
+ 
 
 carburantTypesSelect.addEventListener("change", () => {
   carburantType = carburantTypesSelect.value;
@@ -129,8 +117,8 @@ function createCarburant() {
   carburantTypesSelect.innerHTML = options.join("")
 
 
-  if (!formDiv.contains(carburantLabel)) {
-    formDiv.appendChild(carburantLabel)
+  if (!carburantDiv.contains(carburantLabel)) {
+    carburantDiv.appendChild(carburantLabel)
   };
 }
 
@@ -141,9 +129,8 @@ function createBoxVitss() {
   const typeBoxVitss = vehiclesBoxVitss[vehicleType];
   boxVitssData.innerText = typeBoxVitss;
   boxVitssType = typeBoxVitss;
-  if (!formDiv.contains(boxVitss)) {
-    formDiv.appendChild(boxVitss);
-    boxVitss.appendChild(boxVitssData)
+  if (!gearBoxDiv.contains(boxVitss)) {
+    gearBoxDiv.appendChild(boxVitss);
   }
 }
 
@@ -155,12 +142,28 @@ const handleSelectChange = () => {
   handleSelectChange();
   vehiclesType.addEventListener("change", handleSelectChange)
 
+
+
+
+
+//  creation result popup
+const popup = document.createElement("div");
+popup.classList.add("popup");
+
+
+const overlay = document.createElement("div");
+overlay.classList.add("overlay");
+
+
+
 const btn = document.createElement("button")
 btn.classList.add("btn")
 btn.innerText = "close"
 btn.addEventListener("click", () => {
   popup.remove()
+  overlay.remove()
 })
+
 
 
 function createResultPopup(nombreDeJour, prix, carbPercentage, bvPercentage) {
@@ -168,13 +171,27 @@ function createResultPopup(nombreDeJour, prix, carbPercentage, bvPercentage) {
   popup.innerHTML = `
     <p>Your Vehicle Reserved</p>
     <p>Vehicle Type: ${vehicleType}</p>
-    <p>Type boite à vitesse: ${boxVitssType} (${bvPercentage * 100}%)</p>
-    <p>Carburant Type: ${carburantType} (${carbPercentage * 100}%)</p>
+    <p>Type boite à vitesse: ${boxVitssType} (+${bvPercentage * 100}%)</p>
+    <p>Carburant Type: ${carburantType} (+${carbPercentage * 100}%)</p>
     <p>Price: ${prix}£ for ${nombreDeJour} days</p>
     `
 
   popup.prepend(btn);
   main.appendChild(popup)
-
+  main.appendChild(overlay)
 
 }
+
+
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const boxVitssPercentage = (vehicleBonus[boxVitssType] || 0) / 100;
+  const carburantPercentage = (vehicleBonus[carburantType] || 0) / 100;
+  const nmbrOfDays = nmbrDays.value
+  const vehiclePrix = vehiclesPrix[vehicleType]
+
+  let prix = vehiclePrix + (vehiclePrix * boxVitssPercentage) + (vehiclePrix * carburantPercentage)
+  prix = prix * nmbrOfDays;
+  createResultPopup(nmbrOfDays, prix, carburantPercentage, boxVitssPercentage);
+})
